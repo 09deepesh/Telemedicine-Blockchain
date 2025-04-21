@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MetaMask Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.6.0/dist/web3.min.js"></script>
+</head>
+<body>
+    <h1>MetaMask Connection Test</h1>
+    <div id="status">Checking MetaMask...</div>
+    <button id="connect-btn">Connect to MetaMask</button>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const statusDiv = document.getElementById('status');
+            const connectBtn = document.getElementById('connect-btn');
+            
+            // Check if MetaMask is installed
+            if (window.ethereum) {
+                statusDiv.textContent = "MetaMask is installed!";
+                
+                connectBtn.addEventListener('click', async function() {
+                    try {
+                        // Request account access
+                        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                        statusDiv.textContent = `Connected! Account: ${accounts[0]}`;
+                    } catch (error) {
+                        statusDiv.textContent = `Error: ${error.message}`;
+                    }
+                });
+            } else {
+                statusDiv.textContent = "MetaMask is not installed";
+                connectBtn.disabled = true;
+            }
+        });
+    </script>
+</body>
+</html>
