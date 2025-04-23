@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS patients (
 
 -- appointments table
 CREATE TABLE IF NOT EXISTS appointments (
-  id INT PRIMARY KEY,
+  id INT PRIMARY KEY AUTO_INCREMENT,
   doctorAddress VARCHAR(42),
   patientAddress VARCHAR(42),
   timestamp BIGINT,
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS appointments (
 
 -- prescriptions table
 CREATE TABLE IF NOT EXISTS prescriptions (
-  id INT PRIMARY KEY,
+  id INT PRIMARY KEY AUTO_INCREMENT,
   appointmentId INT,
   doctorAddress VARCHAR(42),
   patientAddress VARCHAR(42),
@@ -47,4 +47,4 @@ CREATE TABLE IF NOT EXISTS prescriptions (
   FOREIGN KEY (appointmentId) REFERENCES appointments(id),
   FOREIGN KEY (doctorAddress) REFERENCES doctors(address),
   FOREIGN KEY (patientAddress) REFERENCES patients(address)
-);
+); 

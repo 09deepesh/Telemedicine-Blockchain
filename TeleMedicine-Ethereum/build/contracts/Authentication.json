@@ -1572,7 +1572,7 @@
   "sourceMap": "94:1109:0:-:0;;;492:118;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;547:14;:55;;-1:-1:-1;;;;;;547:55:0;-1:-1:-1;;;;;547:55:0;;;;;;;;;;94:1109;;14:290:5;84:6;137:2;125:9;116:7;112:23;108:32;105:52;;;153:1;150;143:12;105:52;179:16;;-1:-1:-1;;;;;224:31:5;;214:42;;204:70;;270:1;267;260:12;204:70;293:5;14:290;-1:-1:-1;;;14:290:5:o;:::-;94:1109:0;;;;;;",
   "deployedSourceMap": "94:1109:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1074:126;;;;;;:::i;:::-;;:::i;:::-;;;470:14:5;;463:22;445:41;;433:2;418:18;1074:126:0;;;;;;;877:124;;;;;;:::i;:::-;;:::i;662:143::-;;;:::i;1074:126::-;1134:4;1158:14;;:34;;-1:-1:-1;;;1158:34:0;;-1:-1:-1;;;;;661:32:5;;;1158:34:0;;;643:51:5;1158:14:0;;;;:24;;616:18:5;;1158:34:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;1151:41;1074:126;-1:-1:-1;;1074:126:0:o;877:124::-;936:4;960:14;;:33;;-1:-1:-1;;;960:33:0;;-1:-1:-1;;;;;661:32:5;;;960:33:0;;;643:51:5;960:14:0;;;;:23;;616:18:5;;960:33:0;497:203:5;662:143:0;716:4;338:14;;:36;;-1:-1:-1;;;338:36:0;;363:10;338:36;;;643:51:5;-1:-1:-1;;;;;338:14:0;;;;:24;;616:18:5;;338:36:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;:75;;;-1:-1:-1;378:14:0;;:35;;-1:-1:-1;;;378:35:0;;402:10;378:35;;;643:51:5;-1:-1:-1;;;;;378:14:0;;;;:23;;616:18:5;;378:35:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;316:144;;;;-1:-1:-1;;;316:144:0;;1189:2:5;316:144:0;;;1171:21:5;1228:2;1208:18;;;1201:30;-1:-1:-1;;;1247:18:5;;;1240:49;1306:18;;316:144:0;;;;;;;;738:37:::1;::::0;;747:10:::1;1509:51:5::0;;759:15:0::1;1591:2:5::0;1576:18;;1569:34;738:37:0::1;::::0;1482:18:5;738:37:0::1;;;;;;;-1:-1:-1::0;793:4:0::1;662:143:::0;:::o;14:286:5:-;73:6;126:2;114:9;105:7;101:23;97:32;94:52;;;142:1;139;132:12;94:52;168:23;;-1:-1:-1;;;;;220:31:5;;210:42;;200:70;;266:1;263;256:12;200:70;289:5;14:286;-1:-1:-1;;;14:286:5:o;705:277::-;772:6;825:2;813:9;804:7;800:23;796:32;793:52;;;841:1;838;831:12;793:52;873:9;867:16;926:5;919:13;912:21;905:5;902:32;892:60;;948:1;945;938:12",
   "source": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.0;\r\n\r\nimport \"./UserManagement.sol\";\r\n\r\ncontract Authentication {\r\n    UserManagement private userManagement;\r\n    \r\n    // Events\r\n    event LoggedIn(address userAddress, uint256 timestamp);\r\n    \r\n    // Modifiers\r\n    modifier onlyRegisteredUser() {\r\n        require(\r\n            userManagement.isPatient(msg.sender) || userManagement.isDoctor(msg.sender),\r\n            \"User not registered\"\r\n        );\r\n        _;\r\n    }\r\n    \r\n    constructor(address _userManagementAddress) {\r\n        userManagement = UserManagement(_userManagementAddress);\r\n    }\r\n    \r\n    // Function to authenticate a user\r\n    function login() external onlyRegisteredUser returns (bool) {\r\n        emit LoggedIn(msg.sender, block.timestamp);\r\n        return true;\r\n    }\r\n    \r\n    // Function to check if an address belongs to a doctor\r\n    function isDoctor(address _address) external view returns (bool) {\r\n        return userManagement.isDoctor(_address);\r\n    }\r\n    \r\n    // Function to check if an address belongs to a patient\r\n    function isPatient(address _address) external view returns (bool) {\r\n        return userManagement.isPatient(_address);\r\n    }\r\n}",
-  "sourcePath": "C:\\Users\\Chaitanya\\Desktop\\VS_Code\\6th_Sem\\BC\\VS_3\\TeleMedicine-Ethereum\\contracts\\Authentication.sol",
+  "sourcePath": "C:\\Users\\Deepesh D Haldankar\\Downloads\\Telemedicine-Blockchain\\TeleMedicine-Ethereum\\contracts\\Authentication.sol",
   "ast": {
     "absolutePath": "project:/contracts/Authentication.sol",
     "exportedSymbols": {
@@ -2688,12 +2688,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x412B96dEDE0Aab339CB0bA2814d5DCa9599Cde63",
-      "transactionHash": "0x0faaf76a123449bf814791d5813e838af6ec4a077b6fa27780323e54d4590431"
+      "address": "0x6f24C7E1667de1BEE505ea625263754f7ADb78d1",
+      "transactionHash": "0xe673725c3247a12f0f8b24eda692700d874110715ce1111c14c49a140378c03e"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2025-04-20T17:00:21.991Z",
+  "updatedAt": "2025-04-23T09:31:04.558Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",

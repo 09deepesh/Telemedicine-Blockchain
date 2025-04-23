@@ -10,6 +10,21 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+// Add root route
+app.get('/', (req, res) => {
+  res.json({ 
+    status: 'ok',
+    message: 'Telemedicine API is running',
+    endpoints: [
+      '/api/doctors',
+      '/api/patients',
+      '/api/appointments',
+      '/api/appointments/patient/:address',
+      '/api/appointments/doctor/:doctorAddress'
+    ]
+  });
+});
+
 // ✅ Create a MySQL pool for queries
 const pool = mysql.createPool({
   host: process.env.DB_HOST,
